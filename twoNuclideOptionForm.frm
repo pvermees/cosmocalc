@@ -15,6 +15,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 
+
 Private Sub userform_initialize()
     Me.confiLevelBox.Value = 100 - glob.ConfiLevel
     If glob.NewtonOption Then

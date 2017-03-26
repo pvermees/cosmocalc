@@ -13,8 +13,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-
-
 Private Sub ageButton_Click()
     ComboBoxE.Visible = True
     LabelE1.Visible = True
@@ -91,7 +89,7 @@ Private Sub forwardButton_Click()
         t = CDbl(Me.tBox.Text)
         N = getN(E / 1000, t * 1000, Tau * 1000, nucl)
     End If
-    Me.NBox.Value = CLng(N)
+    Me.nBox.Value = CLng(N)
     Set nucl = Nothing
 End Sub
 Private Sub oneNuclideButton_Click()
@@ -130,25 +128,25 @@ Private Sub AgeCalc(nucl As MyNuclide, theRange As MyRange)
             End With
             For rownum = 1 To theRange.numRows
                 On Error GoTo errorhandler
-                Scaling = theRange.CellValue(rownum, 1)
-                If Scaling <> "" And IsNumeric(Scaling) Then
-                    Call nucl.SetScaling(Scaling)
+                S = theRange.CellValue(rownum, 1)
+                If S <> "" And IsNumeric(S) Then
+                    Call nucl.SetScaling(S)
                     N1 = theRange.CellValue(rownum, 2)
                     N1err = theRange.CellValue(rownum, 3)
                     E = CDbl(ComboBoxE.Text) / 1000
-                    Age = getAge(N1, nucl, E) / 1000
-                    AgeErr = getAgeErr(N1, N1err, nucl, Age, E) / 1000
+                    t = getAge(N1, nucl, E) / 1000
+                    st = getAgeErr(N1, N1err, nucl, t, E) / 1000
 Label:
                 With Range(theRange.CellAddress(rownum, theRange.numcols))
-                    .Offset(0, 1).Value = Age
-                    .Offset(0, 2).Value = AgeErr
+                    .Offset(0, 1).Value = t
+                    .Offset(0, 2).Value = st
                     .Offset(0, 1).NumberFormat = "0.0"
                     .Offset(0, 2).NumberFormat = "0.0"
                 End With
 errorhandler:
                     If Err.Number <> 0 Then
-                        Age = 0
-                        AgeErr = 0
+                        t = 0
+                        st = 0
                         Resume Label
                     End If
                 End If
@@ -167,9 +165,9 @@ Private Sub ErosionCalc(nucl As MyNuclide, theRange As MyRange)
             End With
             For rownum = 1 To theRange.numRows
                 On Error GoTo errorhandler
-                Scaling = theRange.CellValue(rownum, 1)
-                If Scaling <> "" And IsNumeric(Scaling) Then
-                    Call nucl.SetScaling(Scaling)
+                S = theRange.CellValue(rownum, 1)
+                If S <> "" And IsNumeric(S) Then
+                    Call nucl.SetScaling(S)
                     N1 = theRange.CellValue(rownum, 2)
                     N1err = theRange.CellValue(rownum, 3)
                     erosion = 1000 * getErosion(N1, nucl)

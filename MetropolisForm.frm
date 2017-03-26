@@ -15,6 +15,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 
+
 Private Sub userform_activate()
     On Error Resume Next
     Dim nucl1 As MyNuclide

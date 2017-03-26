@@ -4,81 +4,37 @@ Option Private Module
 Public Const APPNAME As String = "CosmoCalc"
 Public Const pi As Double = 3.14159265358979
 Public glob As MyGlobals
-Sub Auto_Open()
-'   Creates a new menu and adds menu items
-    Dim Cap(1 To 7)
-    Dim Mac(1 To 7)
-    Dim MenuName As String
-    Dim sht As Worksheet
-    
-    MenuName = "&CosmoCalc"
-    
-    Cap(1) = "Scaling"
-    Mac(1) = "Scaling"
-    Cap(2) = "Shielding"
-    Mac(2) = "Shielding"
-    Cap(3) = "Banana"
-    Mac(3) = "Banana"
-    Cap(4) = "Age/Erosion"
-    Mac(4) = "Age"
-    Cap(5) = "Converters"
-    Mac(5) = "Converters"
-    Cap(6) = "Settings"
-    Mac(6) = "Settings"
-    Cap(7) = "About..."
-    Mac(7) = "About"
-
-    On Error Resume Next
-'   Delete the menu if it already exists
-    MenuBars(xlWorksheet).Menus(MenuName).Delete
-    
-'   Add the menu
-    MenuBars(xlWorksheet).Menus.Add Caption:=MenuName
-    
-'   Add the menu items
-    With MenuBars(xlWorksheet).Menus(MenuName).MenuItems
-        .Add Caption:=Cap(1), OnAction:=Mac(1)
-        .Add Caption:=Cap(2), OnAction:=Mac(2)
-        .Add Caption:=Cap(3), OnAction:=Mac(3)
-        .Add Caption:=Cap(4), OnAction:=Mac(4)
-        .Add Caption:=Cap(5), OnAction:=Mac(5)
-        .Add Caption:=Cap(6), OnAction:=Mac(6)
-        .Add Caption:="-"
-        .Add Caption:=Cap(7), OnAction:=Mac(7)
-    End With
-    
-End Sub
-Private Sub Scaling()
+Public Sub ScalingModels()
     On Error Resume Next
     Set glob = New MyGlobals
     ScalingForm.Show
     Set glob = Nothing
 End Sub
-Private Sub Shielding()
+Public Sub Shielding()
     On Error Resume Next
     Set glob = New MyGlobals
     ShieldingForm.Show
     Set glob = Nothing
 End Sub
-Private Sub Age()
+Public Sub Age()
     On Error Resume Next
     Set glob = New MyGlobals
     AgeForm.Show
     Set glob = Nothing
 End Sub
-Private Sub Banana()
+Public Sub Banana()
     On Error Resume Next
     Set glob = New MyGlobals
     BananaForm.Show
     Set glob = Nothing
 End Sub
-Private Sub Settings()
+Public Sub Settings()
     On Error Resume Next
     Set glob = New MyGlobals
     SettingsForm.Show
     Set glob = Nothing
 End Sub
-Private Sub Converters()
+Public Sub Converters()
     On Error Resume Next
     Set glob = New MyGlobals
     ConverterForm.Show
@@ -126,11 +82,4 @@ Private Sub About()
         On Error GoTo 0
     End If
     Set glob = Nothing
-End Sub
-Sub Auto_Close()
-    Dim MenuName As String
-    MenuName = "&CosmoCalc"
-'   Delete the menu before closing
-    On Error Resume Next
-    MenuBars(xlWorksheet).Menus(MenuName).Delete
 End Sub

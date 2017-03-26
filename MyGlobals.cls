@@ -89,7 +89,7 @@ Private Sub class_initialize()
     currSheet = ActiveSheet.name
     m_name = "CosmoCalcVars"
     m_PC = True
-    versie = "version 2.4"
+    versie = "version 3.0"
     Dim i As Integer, i2 As Integer
     Dim bWksExists As Boolean
     i2 = Worksheets.Count

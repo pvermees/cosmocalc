@@ -15,6 +15,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 
+
 Private Sub userform_initialize()
     On Error Resume Next
     With Me.ComboBox1
@@ -43,7 +44,7 @@ End Sub
 Private Sub addRecordButton_Click()
     On Error Resume Next
     reminder.Visible = True
-    Me.NBox.Text = ""
+    Me.nBox.Text = ""
     Me.ageBox.Text = ""
     Me.latBox.Text = ""
     Me.elevBox.Text = ""
@@ -59,8 +60,8 @@ Private Sub enterRecordButton_Click()
     If (Me.reminder.Visible) Then
         Dim theRange As MyRange
         Set theRange = New MyRange
-        If Not (Me.NBox.Text = "" Or Me.ageBox.Text = "" Or Me.latBox.Text = "" Or Me.elevBox.Text = "") _
-            And (IsNumeric(CDbl(Me.NBox.Text)) And IsNumeric(CDbl(Me.ageBox.Text)) _
+        If Not (Me.nBox.Text = "" Or Me.ageBox.Text = "" Or Me.latBox.Text = "" Or Me.elevBox.Text = "") _
+            And (IsNumeric(CDbl(Me.nBox.Text)) And IsNumeric(CDbl(Me.ageBox.Text)) _
             And IsNumeric(CDbl(Me.latBox.Text)) And IsNumeric(CDbl(Me.elevBox.Text))) Then
             N = Me.recnumBox.Value
             If N > SpinButton.Max Then
@@ -81,7 +82,7 @@ Private Sub enterRecordButton_Click()
                 End Select
             End If
             Call theRange.SetProperties(glob.CalRange(nucl), glob.name)
-            Call theRange.SetCellValue(N, 1, CDbl(Me.NBox.Text))
+            Call theRange.SetCellValue(N, 1, CDbl(Me.nBox.Text))
             Call theRange.SetCellValue(N, 2, CDbl(Me.ageBox.Text))
             Call theRange.SetCellValue(N, 3, CDbl(Me.latBox.Text))
             Call theRange.SetCellValue(N, 4, CDbl(Me.elevBox.Text))
@@ -154,7 +155,7 @@ Private Sub showRec(ByVal nucl As String, ByVal recnum As Integer)
     Dim theRange As MyRange
     Set theRange = New MyRange
     Call theRange.SetProperties(glob.CalRange(nucl), glob.name)
-    Me.NBox.Text = CStr(theRange.CellValue(recnum, 1))
+    Me.nBox.Text = CStr(theRange.CellValue(recnum, 1))
     Me.ageBox.Text = CStr(theRange.CellValue(recnum, 2))
     Me.latBox.Text = CStr(theRange.CellValue(recnum, 3))
     Me.elevBox.Text = CStr(theRange.CellValue(recnum, 4))

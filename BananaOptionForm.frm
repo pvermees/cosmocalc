@@ -15,6 +15,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 
+
 Private Sub userform_initialize()
     Me.xMinBox.Text = CStr(glob.xMin)
     Me.xMaxBox.Text = CStr(glob.xMax)

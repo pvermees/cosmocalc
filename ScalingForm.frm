@@ -13,8 +13,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-
-
 Private Sub ComboBox_Change()
     Select Case Me.ComboBox
         Case Is = "Lal"
@@ -29,6 +27,7 @@ Private Sub ComboBox_Change()
             Me.Label.Caption = "Rc (GV) - depth (g/cm3)"
     End Select
 End Sub
+
 Private Sub userform_initialize()
     On Error Resume Next
     With Me.ComboBox
