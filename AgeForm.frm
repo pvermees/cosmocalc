@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} AgeForm 
    Caption         =   "Age/Erosion rate calculator"
-   ClientHeight    =   4020
+   ClientHeight    =   4050
    ClientLeft      =   45
    ClientTop       =   -540
    ClientWidth     =   7440
@@ -22,6 +22,14 @@ Private Sub erosionButton_Click()
     ComboBoxE.Visible = False
     LabelE1.Visible = False
     LabelE2.Visible = False
+End Sub
+
+Private Sub Label16_Click()
+
+End Sub
+
+Private Sub oneNuclideButton1_Click()
+    Call oneNuclideButton_Click
 End Sub
 
 Private Sub userform_initialize()
@@ -89,7 +97,7 @@ Private Sub forwardButton_Click()
         t = CDbl(Me.tBox.Text)
         N = getN(E / 1000, t * 1000, Tau * 1000, nucl)
     End If
-    Me.nBox.Value = CLng(N)
+    Me.NBox.Value = CLng(N)
     Set nucl = Nothing
 End Sub
 Private Sub oneNuclideButton_Click()
