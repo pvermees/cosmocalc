@@ -24,14 +24,6 @@ Private Sub erosionButton_Click()
     LabelE2.Visible = False
 End Sub
 
-Private Sub Label16_Click()
-
-End Sub
-
-Private Sub oneNuclideButton1_Click()
-    Call oneNuclideButton_Click
-End Sub
-
 Private Sub userform_initialize()
     With Me.ComboBox
         .AddItem "26Al"
@@ -97,7 +89,7 @@ Private Sub forwardButton_Click()
         t = CDbl(Me.tBox.Text)
         N = getN(E / 1000, t * 1000, Tau * 1000, nucl)
     End If
-    Me.NBox.Value = CLng(N)
+    Me.nBox.Value = CLng(N)
     Set nucl = Nothing
 End Sub
 Private Sub oneNuclideButton_Click()
